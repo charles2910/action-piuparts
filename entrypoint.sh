@@ -1,5 +1,13 @@
 #!/bin/sh -l
 
+echo "Printenv:\n\n"
+printenv
+echo "\n\n"
+
+echo "package: $INPUT_PACKAGE"
+echo "base-image: ${INPUT_BASE_IMAGE}"
+echo "fake-essential-packages: ${INPUT_FAKE_ESSENTIAL_PACKAGES}"
+
 if [ ! -d /var/lib/docker ]; then
   ORIG_CONTAINER=$(docker ps --latest --quiet)
   ORIG_IMAGE=$(docker inspect ${ORIG_CONTAINER} --format '{{.Config.Image}}')
